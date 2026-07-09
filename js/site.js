@@ -173,6 +173,21 @@
     }
   }
 
+  /* ---------- Scrollspy: aktive Sektion im Menue unterstreichen ---------- */
+  var spyLinks = Array.prototype.slice.call(doc.querySelectorAll('.nav__links a[href*="#"]')), spyMap = {};
+  spyLinks.forEach(function (a) { var h = a.hash; if (h && h.length > 1) { var s = doc.querySelector(h); if (s) spyMap[h.slice(1)] = a; } });
+  if ('IntersectionObserver' in window && Object.keys(spyMap).length) {
+    var sio = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (en.isIntersecting) {
+          spyLinks.forEach(function (a) { a.classList.remove('active'); });
+          var a = spyMap[en.target.id]; if (a) a.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    Object.keys(spyMap).forEach(function (id) { var s = doc.getElementById(id); if (s) sio.observe(s); });
+  }
+
   /* ---------- Hero-Ribbon: mobiler Auto-Marquee, per Finger schiebbar ---------- */
   (function () {
     var ribbon = doc.querySelector('.ribbon'); if (!ribbon) return;

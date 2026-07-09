@@ -55,8 +55,9 @@ p{margin:0 0 1rem}
 .btn--primary:hover{background:#ffe736}
 .btn--ghost{background:transparent;border-color:rgba(255,255,255,.5);color:#fff}
 .btn--ghost:hover{background:rgba(255,255,255,.12);border-color:#fff}
-.btn--wa{background:#1e8a5c;color:#fff}
-.btn--wa:hover{background:#166b47}
+/* WhatsApp: grüner Rahmen, innen leer, Hover = stark transparentes Grün (Ghost-Prinzip wie Hero-Button) */
+.btn--wa{background:transparent;border-color:#39bf82;color:#39bf82}
+.btn--wa:hover{background:rgba(57,191,130,.16);border-color:#63d8a2;color:#63d8a2}
 .btn svg{width:18px;height:18px;flex:none}
 
 /* ---- Navigation ---- */
@@ -73,15 +74,18 @@ p{margin:0 0 1rem}
 .nav__links a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:2px;background:var(--yellow);transition:right .3s var(--ease)}
 .nav__links a:hover::after,.nav__links a.active::after{right:0}
 .nav__cta{margin-left:6px}
-.nav__links a.nav__cta{padding:9px 22px;line-height:1}
+/* Nav-Kontakt als Ghost wie im mobilen Menue: transparent, gelber Rahmen, gelber Text, Hover stark-transparentes Gelb */
+.nav__links a.nav__cta{padding:9px 22px;line-height:1;background:transparent;border-color:var(--yellow);color:var(--yellow)}
+.nav__links a.nav__cta:hover{background:rgba(242,221,11,.16);color:var(--yellow)}
 .nav__links a.nav__cta::after{display:none}
 /* Nav auch auf Unterseiten oben transparent (ueber der dunklen Subhero), solid erst beim Scrollen */
 .nav.scrolled{background:var(--cream);border-bottom-color:var(--line);box-shadow:0 1px 0 rgba(0,0,0,.02)}
 .nav.scrolled .brand{color:var(--olive-deep)}
 .nav.scrolled .brand small{color:var(--gold)}
 .nav.scrolled .nav__links a{color:var(--ink)}
-/* CTA bleibt gelb + lesbar (hohe Spezifitaet, sonst frisst .nav__links a die Textfarbe -> schwarz auf schwarz) */
-.nav.scrolled .nav__links a.nav__cta{background:var(--yellow);color:var(--olive-deep)}
+/* CTA-Ghost auf hellem Scroll-Header: Gold (Gelb waere auf Creme unlesbar), bleibt Rahmen/leer */
+.nav.scrolled .nav__links a.nav__cta{background:transparent;border-color:var(--gold);color:var(--gold)}
+.nav.scrolled .nav__links a.nav__cta:hover{background:rgba(185,141,5,.12);color:var(--gold)}
 .nav.scrolled .burger span{background:var(--olive-deep)}
 /* Marken-Zeichen auf hellem Header abdunkeln (Gelb auf Creme sonst zu blass) */
 .nav.scrolled .brand .logo{filter:brightness(.55) saturate(1.5)}
@@ -122,7 +126,10 @@ p{margin:0 0 1rem}
 .mmenu__social a:hover{background:rgba(255,255,255,.1);border-color:#fff;color:#fff}
 .mmenu__social a svg{width:20px;height:20px}
 .mmenu__cta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
-.mmenu__cta .btn{width:100%;justify-content:center;font-size:14px;padding:12px 14px}
+.mmenu__cta .btn{width:100%;justify-content:center;font-size:14px;height:46px;padding:0 14px}
+/* Kontakt im Menue: gelber Rahmen, innen leer, Hover = stark transparentes Gelb */
+.mmenu__cta .btn--primary{background:transparent;border-color:var(--yellow);color:var(--yellow)}
+.mmenu__cta .btn--primary:hover{background:rgba(242,221,11,.16);border-color:var(--yellow);color:var(--yellow)}
 .mmenu__rating{margin-top:10px;width:100%;justify-content:center}
 
 /* ---- Hero: Text links, freigestelltes Portrait rechts, Olive-Verlauf ---- */
@@ -138,9 +145,9 @@ p{margin:0 0 1rem}
 .hero__sub{color:rgba(255,255,255,.82);font-size:clamp(17px,2vw,20px);max-width:520px;margin:20px 0 0;line-height:1.55}
 .hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .hero__portrait{position:relative;justify-self:center}
-/* KEIN Drop-Shadow (erzeugte den rechteckigen Schatten); Ober- UND Unterkante weich ausblenden, damit keine Bildkante als Linie sichtbar wird */
+/* KEIN Drop-Shadow (erzeugte den rechteckigen Schatten); nur die Unterkante weich ausblenden (Oberkante NICHT, sonst werden die Haare ausgewischt) */
 .hero__portrait img{width:min(100%,478px);
-  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 7%,#000 84%,transparent 99%);mask-image:linear-gradient(180deg,transparent 0,#000 7%,#000 84%,transparent 99%)}
+  -webkit-mask-image:linear-gradient(180deg,#000 84%,transparent 99%);mask-image:linear-gradient(180deg,#000 84%,transparent 99%)}
 .hero__portrait .rating{position:absolute;left:-14px;bottom:24px}
 .ribbon{position:relative;z-index:1;min-width:0;max-width:100%;margin-top:34px;display:flex;flex-wrap:wrap;gap:12px 26px;padding-top:20px;border-top:1px solid var(--line-d)}
 .ribbon span{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,.8);font-size:14px;font-weight:600}
@@ -245,7 +252,7 @@ p{margin:0 0 1rem}
 .contact__block h3{color:#fff;font-size:22px;margin-bottom:14px}
 .contact__block p{color:rgba(255,255,255,.8);font-size:16px;margin:0 0 .5rem}
 .contact__block a{color:var(--yellow)}
-.contact__block a.btn--wa{color:#fff}  /* Button-Text weiss wie im Menue, nicht gelb */
+.contact__block a.btn--wa{color:#39bf82}  /* grüner Ghost-WhatsApp, nicht gelb */
 .contact__block a.btn--primary{color:var(--olive-deep)}
 .socials{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:6px}
 .socials a{display:inline-flex;align-items:center;justify-content:center;gap:9px;color:rgba(255,255,255,.85);font-size:14.5px;font-weight:600;border:1px solid var(--line-d);padding:12px 15px;transition:background .2s,border-color .2s,color .2s}
@@ -300,8 +307,8 @@ p{margin:0 0 1rem}
   .contact__block .btn--wa{display:flex;width:100%;justify-content:center}
 }
 @media(min-width:1024px){
-  /* Hero-Text + Buttons 50px hoch, damit die Buttons unten ins Bild ruecken */
-  .hero__text{margin-top:-50px}
+  /* Hero-Text/Titel/Buttons/Marquee 40px hoch (10px tiefer als zuvor -50); Portrait bleibt an Position (30px-runter gilt nur mobil) */
+  .hero__text{margin-top:-40px}
   /* Kontakt: Social-Block schmaler + rechtsbuendig (etwa in Flucht des ersten Menuepunkts) */
   .contact{grid-template-columns:1.12fr .88fr}
   .contact__block:last-child{text-align:right}
