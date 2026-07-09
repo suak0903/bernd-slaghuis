@@ -1,0 +1,105 @@
+/* Dr. Bernd Slaghuis - Chrome/Interaktion (Vanilla, kein Framework) */
+(function(){
+  'use strict';
+  var nav = document.getElementById('nav');
+  var isSub = document.body.classList.contains('sub');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function onScroll(){ if(nav && !isSub) nav.classList.toggle('scrolled', window.scrollY > 30); }
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+  /* ---- Mobile-Menue: Vollglas von OBEN, Header blendet aus ---- */
+  var burger = document.getElementById('burger'),
+      mmenu  = document.getElementById('mmenu'),
+      mclose = document.getElementById('mclose');
+  function lockScroll(){ var sw=window.innerWidth-document.documentElement.clientWidth; if(sw>0) document.body.style.paddingRight=sw+'px'; document.body.style.overflow='hidden'; }
+  function unlockScroll(){ document.body.style.overflow=''; document.body.style.paddingRight=''; }
+  function openMenu(){ mmenu.classList.add('open'); nav.classList.add('menu-open'); mmenu.removeAttribute('inert'); burger.setAttribute('aria-expanded','true'); lockScroll(); }
+  function closeMenu(){ mmenu.classList.remove('open'); nav.classList.remove('menu-open'); mmenu.setAttribute('inert',''); burger.setAttribute('aria-expanded','false'); unlockScroll(); }
+  if(burger){ burger.addEventListener('click', openMenu); }
+  if(mclose){ mclose.addEventListener('click', closeMenu); }
+  if(mmenu){ mmenu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); }); }
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && mmenu && mmenu.classList.contains('open')) closeMenu(); });
+  /* Swipe nach OBEN (Herkunftsrichtung) schliesst das Menue */
+  if(mmenu){
+    var msx=0,msy=0,mt=false;
+    mmenu.addEventListener('touchstart',function(e){ msx=e.touches[0].clientX; msy=e.touches[0].clientY; mt=true; },{passive:true});
+    mmenu.addEventListener('touchmove',function(e){ if(!mt)return; var dx=e.touches[0].clientX-msx, dy=e.touches[0].clientY-msy;
+      if(dy<-60 && Math.abs(dy)>Math.abs(dx)){ mt=false; closeMenu(); } },{passive:true});
+    mmenu.addEventListener('touchend',function(){ mt=false; });
+  }
+
+  /* Smooth-Scroll (/ und /index.html gleich behandeln) */
+  var navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 74;
+  function samePage(p){ return p.replace(/\/index\.html$/,'/').replace(/\/$/,''); }
+  document.querySelectorAll('a[href*="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var url; try{ url=new URL(a.href, location.href); }catch(err){ return; }
+      if(samePage(url.pathname)!==samePage(location.pathname) || !url.hash) return;
+      var el=document.querySelector(url.hash); if(!el) return;
+      e.preventDefault();
+      var y=el.getBoundingClientRect().top+window.scrollY-(navH-2);
+      window.scrollTo({ top:(url.hash==='#top'||url.hash==='#hero')?0:y, behavior:reduce?'auto':'smooth' });
+      history.replaceState(null,'',url.hash);
+    });
+  });
+
+  /* Reveal-on-scroll */
+  if(!reduce && 'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }); }, { rootMargin:'0px 0px -8% 0px', threshold:0.08 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else { document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); }); }
+
+  /* Demo-Leiste: erscheint bei JEDEM Laden; X blendet nur aktuelle Ansicht aus */
+  var demobar=document.getElementById('demobar'), dclose=document.getElementById('demoClose');
+  if(dclose){ dclose.addEventListener('click', function(){ demobar.classList.add('hide'); }); }
+
+  /* Scrollspy */
+  var spyLinks=[].slice.call(document.querySelectorAll('.nav__links a[href*="#"]')), spyMap={};
+  spyLinks.forEach(function(a){ var h=a.hash; if(h&&h.length>1){ var s=document.querySelector(h); if(s) spyMap[h.slice(1)]=a; } });
+  if('IntersectionObserver' in window && Object.keys(spyMap).length){
+    var sio=new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ spyLinks.forEach(function(a){a.classList.remove('active');}); var a=spyMap[en.target.id]; if(a)a.classList.add('active'); } }); }, { rootMargin:'-45% 0px -50% 0px', threshold:0 });
+    Object.keys(spyMap).forEach(function(id){ var s=document.getElementById(id); if(s) sio.observe(s); });
+  }
+
+  /* ---- Google-Reviews-Panel (faehrt von rechts ein) ---- */
+  var reviews=document.getElementById('reviews'), rvScrim=document.getElementById('rvScrim'),
+      rvClose=document.getElementById('rvClose'), rvTriggers=[].slice.call(document.querySelectorAll('[data-reviews]'));
+  if(reviews && rvScrim){
+    function openRv(){ reviews.classList.add('open'); rvScrim.classList.add('open'); reviews.setAttribute('aria-hidden','false'); lockScroll(); }
+    function closeRv(){ reviews.classList.remove('open'); rvScrim.classList.remove('open'); reviews.setAttribute('aria-hidden','true'); unlockScroll(); }
+    rvTriggers.forEach(function(t){ t.addEventListener('click', openRv); });
+    if(rvClose) rvClose.addEventListener('click', closeRv);
+    rvScrim.addEventListener('click', closeRv);
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && reviews.classList.contains('open')) closeRv(); });
+  }
+
+  /* ---- Nach-oben-Button (zurueck zum Mini-Inhaltsverzeichnis, nur Hinweise-Seite) ---- */
+  var tocTop=document.getElementById('tocTop');
+  if(tocTop){
+    window.addEventListener('scroll', function(){ tocTop.classList.toggle('show', window.scrollY>640); }, {passive:true});
+    tocTop.addEventListener('click', function(){ window.scrollTo({ top:0, behavior:reduce?'auto':'smooth' }); });
+  }
+
+  /* ---- Hero-Ribbon: mobiler Auto-Marquee, per Finger schiebbar ---- */
+  (function(){
+    var ribbon=document.querySelector('.ribbon'); if(!ribbon) return;
+    var mq=window.matchMedia('(max-width:700px)');
+    var track=null, built=false, offset=0, half=0, raf=0, dragging=false, sx=0, so=0;
+    function build(){ if(built) return; track=document.createElement('div'); track.className='ribbon__track';
+      while(ribbon.firstChild) track.appendChild(ribbon.firstChild);
+      [].slice.call(track.children).forEach(function(k){ var c=k.cloneNode(true); c.setAttribute('data-dup','1'); track.appendChild(c); });
+      ribbon.appendChild(track); built=true; offset=0; half=track.scrollWidth/2; }
+    function unbuild(){ if(!built) return; cancelAnimationFrame(raf);
+      [].slice.call(track.querySelectorAll('[data-dup]')).forEach(function(d){d.remove();});
+      while(track.firstChild) ribbon.insertBefore(track.firstChild, track); track.remove(); track=null; built=false; }
+    function frame(){ if(!dragging && !reduce) offset-=0.4; if(offset<=-half) offset+=half; if(offset>0) offset-=half;
+      track.style.transform='translateX('+offset.toFixed(2)+'px)'; raf=requestAnimationFrame(frame); }
+    function start(){ build(); half=track.scrollWidth/2; cancelAnimationFrame(raf); raf=requestAnimationFrame(frame); }
+    ribbon.addEventListener('touchstart',function(e){ if(!built)return; dragging=true; sx=e.touches[0].clientX; so=offset; },{passive:true});
+    ribbon.addEventListener('touchmove',function(e){ if(!dragging)return; offset=so+(e.touches[0].clientX-sx); },{passive:true});
+    ribbon.addEventListener('touchend',function(){ dragging=false; });
+    function apply(){ if(mq.matches) start(); else unbuild(); }
+    apply(); if(mq.addEventListener) mq.addEventListener('change', apply); else mq.addListener(apply);
+  })();
+})();

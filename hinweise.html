@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Über diesen Entwurf | Dr. Bernd Slaghuis</title>
+<meta name="description" content="Redesign-Entwurf für Dr. Bernd Slaghuis: Design-System, was besser ist, Referenzen und warum sich die Zusammenarbeit lohnt.">
+<link rel="icon" href="media/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/site.css?v=1">
+</head>
+<body class="sub">
+<a href="#gebaut" class="skip">Zum Inhalt springen</a>
+
+<!-- #chrome:header -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="index.html#top" class="brand" aria-label="Dr. Bernd Slaghuis Startseite"><b>Dr. Bernd Slaghuis</b></a>
+    <nav class="nav__links" aria-label="Hauptnavigation">
+      <a href="index.html#ueber">Über mich</a>
+      <a href="index.html#leistungen">Coaching</a>
+      <a href="index.html#presse">Presse</a>
+      <a href="index.html#stimmen">Stimmen</a>
+      <a href="index.html#kontakt" class="btn nav__cta btn--primary">Kontakt</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<nav class="mmenu" id="mmenu" aria-label="Mobile Navigation" inert>
+  <div class="mmenu__top">
+    <a href="index.html#top" class="mmenu__logo" aria-label="Startseite"><b>Dr. Bernd Slaghuis</b></a>
+    <button class="mmenu__x" id="mclose" aria-label="Menü schließen"></button>
+  </div>
+  <div class="mmenu__links">
+    <a href="index.html#ueber"><span class="n">01</span>Über mich</a>
+    <a href="index.html#leistungen"><span class="n">02</span>Coaching</a>
+    <a href="index.html#presse"><span class="n">03</span>Presse</a>
+    <a href="index.html#stimmen"><span class="n">04</span>Stimmen</a>
+    <a href="index.html#kontakt"><span class="n">05</span>Kontakt</a>
+  </div>
+  <div class="mmenu__foot">
+    <div class="mmenu__social">
+      <a href="https://www.linkedin.com/in/berndslaghuis/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-.9 1.8-1.9 3.6-1.9 3.9 0 4.6 2.5 4.6 5.8V21H20v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9z"/></svg></a>
+      <a href="https://www.xing.com/profile/Bernd_Slaghuis" target="_blank" rel="noopener" aria-label="XING"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.5 7H5.8l1.9 3.3-3 5.3h2.7l3-5.3zM17 3l-6 10.6L14.7 21h2.8l-3.7-7.4L20 3z"/></svg></a>
+      <a href="https://www.instagram.com/bernd_slaghuis/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.facebook.com/coachingkoeln" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></a>
+    </div>
+    <div class="mmenu__cta">
+      <a class="btn btn--wa" href="https://wa.me/4915140419516" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm5.6 14.2c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.1-.8-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2 0 .4-.1.5l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2 1.3 2.3 1.4.2.1.4.1.5-.1l.7-.8c.2-.2.4-.2.6-.1l1.9.9c.2.1.4.2.4.3.1.2.1.6 0 .9z"/></svg>WhatsApp</a>
+      <a class="btn btn--primary" href="index.html#kontakt">Kontakt</a>
+    </div>
+    <button class="rating mmenu__rating" type="button" data-reviews aria-label="Google-Bewertungen ansehen">
+      <svg class="rating__g" viewBox="0 0 48 48"><path fill="#4285F4" d="M45 24c0-1.6-.1-3.1-.4-4.6H24v9.3h11.8c-.5 2.7-2 5-4.3 6.6v5.5h7C42.6 37 45 31 45 24z"/><path fill="#34A853" d="M24 46c5.8 0 10.7-1.9 14.3-5.2l-7-5.5c-1.9 1.3-4.4 2.1-7.3 2.1-5.6 0-10.4-3.8-12.1-8.9H4.6v5.6C8.2 41.1 15.5 46 24 46z"/><path fill="#FBBC05" d="M11.9 28.5c-.4-1.3-.7-2.7-.7-4.5s.3-3.2.7-4.5v-5.6H4.6C3 17.1 2 20.4 2 24s1 6.9 2.6 10.1l7.3-5.6z"/><path fill="#EA4335" d="M24 11.6c3.2 0 6 1.1 8.2 3.2l6.2-6.2C34.7 5 29.8 3 24 3 15.5 3 8.2 7.9 4.6 15.4l7.3 5.6C13.6 15.4 18.4 11.6 24 11.6z"/></svg>
+      <span><span class="rating__num">4,9</span><span class="rating__stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg></span><span class="rating__meta">Google Bewertungen</span></span>
+    </button>
+  </div>
+</nav>
+<!-- /#chrome:header -->
+
+<section class="subhero" id="top">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html#top">Start</a> &nbsp;/&nbsp; Über diesen Entwurf</div>
+    <div class="eyebrow" style="margin-top:18px">Redesign-Demonstrator &middot; Vorangebot</div>
+    <h1>Über diesen Entwurf<span class="dot">.</span></h1>
+    <p>Kurz und ehrlich: was ich gemacht habe, was besser ist und warum sich die Zusammenarbeit lohnt. Springen Sie direkt zum passenden Abschnitt.</p>
+    <nav class="toc" aria-label="Inhalt">
+      <a href="#gebaut"><span class="tn">01</span>Was gebaut wurde</a>
+      <a href="#design"><span class="tn">02</span>Design-System</a>
+      <a href="#vergleich"><span class="tn">03</span>Was besser ist</a>
+      <a href="#referenzen"><span class="tn">04</span>Referenzen</a>
+      <a href="#warum"><span class="tn">05</span>Warum ich</a>
+    </nav>
+  </div>
+</section>
+
+<!-- 01 WAS GEBAUT -->
+<section class="section" id="gebaut">
+  <div class="wrap">
+    <div class="note-box" style="margin-bottom:48px">
+      <b>Bitte beachten.</b> Ein unverbindlicher Entwurf, nicht öffentlich auffindbar, allein aus öffentlich verfügbaren Inhalten und Bildern erstellt. Kein offizieller Auftritt und auf Wunsch jederzeit entfernbar.
+    </div>
+
+    <div class="sec-h">
+      <div class="eyebrow">Was gebaut wurde</div>
+      <h2>Dieselben Inhalte, ein ruhigerer Auftritt.</h2>
+      <p>Ihre Inhalte und Bilder, neu gestaltet: der Hero mit klarer Bühne statt flachem Grau, die Farben harmonisiert, die Google-Bewertungen elegant eingebunden und WhatsApp durchgehend griffbereit.</p>
+    </div>
+    <div class="two">
+      <div class="card">
+        <h3>Fertig und funktionsfähig</h3>
+        <ul class="chk">
+          <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Individuelles Design statt WordPress-Baukasten</li>
+          <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Ihre Marke behalten, Farben ruhig und harmonisch</li>
+          <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Google-Bewertungen als schönes Panel, WhatsApp direkt</li>
+          <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Strukturierte Daten für Google und KI-Suche</li>
+          <li><svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Schnell auf jedem Gerät, mit lebendigem Mobilmenü</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Für den Live-Betrieb offen</h3>
+        <ul class="chk">
+          <li><svg class="todo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>Terminbuchung (Calendly) und Blog anbinden</li>
+          <li><svg class="todo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>Live-Google-Bewertungen automatisch aktualisieren</li>
+          <li><svg class="todo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>Impressum und Datenschutz final prüfen</li>
+          <li><svg class="todo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>Auf die eigene Domain schalten</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note-box" style="margin-top:34px;background:var(--paper)">
+      <b>Technik und Sorgenfreiheit.</b> Ihre Seite läuft heute auf WordPress (Total-Theme, Visual Composer) - solide, aber schwer. Dieser Entwurf ist schlankes, natives HTML und lässt sich unkompliziert live bringen. Wichtig: Die neue Seite kann erst als Vorschau <b>parallel</b> laufen, bis Sie umschalten. Ihr bestehender Auftritt bleibt bis dahin unangetastet erreichbar. Kein Risiko, nichts geht verloren.
+    </div>
+
+    <div class="scale" style="margin-top:56px">
+      <div class="eyebrow">Wo dieser Entwurf steht</div>
+      <h3 style="font-size:clamp(23px,3.2vw,30px);color:var(--olive-deep);margin:10px 0 8px">Einordnung auf der Ausbau-Skala.</h3>
+      <p style="color:var(--muted);max-width:640px;margin-bottom:40px">Von der einfachen Seite bis zur High-End-Plattform. Danach richtet sich der Preis.</p>
+      <div class="scale__caps">
+        <span><b>0-1</b> einfache Seite, ohne Unterseiten und Formulare</span>
+        <span class="mid"><b>~5</b> typischer Ausbau</span>
+        <span class="end"><b>10</b> All-In: Buchung, CMS, Blog, Login, KI-Agent</span>
+      </div>
+      <div class="scale__track">
+        <div class="scale__fill" style="width:50%"></div>
+        <div class="scale__mk scale__mk--now" style="left:38%"><i></i><span class="scale__lab">Dieser Entwurf</span></div>
+        <div class="scale__mk scale__mk--rec" style="left:50%"><i></i><span class="scale__lab">Meine Empfehlung</span></div>
+      </div>
+      <div class="scale__nums"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div>
+      <ul class="scale__why">
+        <li><b>Dieser Entwurf (~4):</b> eine starke Landingpage mit allen wichtigen Bausteinen. Schlank, schnell, ohne Ballast.</li>
+        <li><b>Meine Empfehlung liegt knapp darüber:</b> Terminbuchung, automatische Google-Bewertungen und Ihr Blog integriert. Das passt zu einem Coaching-Auftritt, ohne aufzublähen.</li>
+        <li><b>Nach ganz rechts ausbaubar:</b> geschützter Mitgliederbereich, Newsletter, ein KI-Assistent für Erstfragen. Wenn und falls Sie es wollen.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 02 DESIGN-SYSTEM -->
+<section class="section section--sand" id="design">
+  <div class="wrap">
+    <div class="sec-h">
+      <div class="eyebrow">Design-System</div>
+      <h2>Ihre Marke, nur ruhiger.</h2>
+      <p>Olive und Gelb bleiben, das laute Orange und die bunten Presse-Kästen weichen einer klaren, warmen Palette. Eine Schrift, die zum Business-Coaching passt.</p>
+    </div>
+    <div class="ds">
+      <div>
+        <div class="eyebrow" style="color:var(--muted)">Farben</div>
+        <div class="ds__sw">
+          <div class="ds__chip"><i style="background:#2b2a20"></i><span>Olive tief</span></div>
+          <div class="ds__chip"><i style="background:#5b5847"></i><span>Khaki</span></div>
+          <div class="ds__chip"><i style="background:#f2dd0b"></i><span>Gelb</span></div>
+          <div class="ds__chip"><i style="background:#b98d05"></i><span>Gold</span></div>
+          <div class="ds__chip"><i style="background:#f1ece0;border-color:#ddd"></i><span>Sand</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="eyebrow" style="color:var(--muted)">Schrift</div>
+        <div class="ds__type" style="margin-top:6px">
+          <div><span class="big">Manrope</span><br><small>Überschriften &amp; Text &middot; modern, klar, vertrauenswürdig</small></div>
+          <div><span style="font-size:16px;color:var(--muted)">Warum: eine sachliche, freundliche Grotesk passt zum seriösen und nahbaren Auftritt eines Karriere-Coachs, besser als eine verspielte Schrift.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 VERGLEICH -->
+<section class="section" id="vergleich">
+  <div class="wrap">
+    <div class="sec-h">
+      <div class="eyebrow">Was besser ist</div>
+      <h2>Der Vergleich, fair bewertet.</h2>
+      <p>Nebeneinander: die bestehende WordPress-Seite und dieser Entwurf.</p>
+    </div>
+    <div class="ctable-wrap">
+      <table class="ctable">
+        <thead><tr><th>Merkmal</th><th class="col-c">Bisher</th><th class="col-c">Entwurf</th></tr></thead>
+        <tbody>
+          <tr><td>Design: individuell statt Baukasten</td><td class="col-c no">WordPress</td><td class="col-c yes">Individuell</td></tr>
+          <tr><td>Ruhiges, harmonisches Farbkonzept</td><td class="col-c no">Kakophonie</td><td class="col-c yes">Ja</td></tr>
+          <tr><td>Klare Handlungsführung (WhatsApp, Kennenlernen)</td><td class="col-c no">Verstreut</td><td class="col-c yes">Durchgängig</td></tr>
+          <tr><td>Google-Bewertungen elegant eingebunden</td><td class="col-c no">Widget</td><td class="col-c yes">Panel</td></tr>
+          <tr><td>Branchen-Schema (Person / ProfessionalService)</td><td class="col-c no">Nein</td><td class="col-c yes">Ja</td></tr>
+          <tr><td>Auffindbar für KI-Suche (GEO)</td><td class="col-c no">Nein</td><td class="col-c yes">Ja</td></tr>
+          <tr><td>Ladezeit &amp; mobile Bedienung</td><td class="col-c no">Schwer</td><td class="col-c yes">Schlank</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sec-h" style="margin-top:56px">
+      <div class="eyebrow">Kurz gemessen</div>
+      <h3 style="font-size:clamp(23px,3.2vw,30px);color:var(--olive-deep);margin:10px 0 20px">Weniger unter der Haube, mehr Wirkung.</h3>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="big">WordPress → statisch</div><div class="lbl">Kein Theme- und Plugin-Ballast, schlankes HTML</div></div>
+      <div class="metric"><div class="big">6 Tracker → 0</div><div class="lbl">Calendly, GA4, Maps, JetPack, Twitter, YouTube laden nicht ungefragt</div></div>
+      <div class="metric"><div class="big">Farb-Chaos → 1 System</div><div class="lbl">Eine harmonische Palette statt Orange, Blau und Rot</div></div>
+    </div>
+    <div class="why">
+      <div class="card"><h3>Auffindbar bei Google</h3><p>Sprechende Titel, saubere Struktur, Branchendaten. Google versteht, wer Sie sind und wofür Sie stehen.</p></div>
+      <div class="card"><h3>Auffindbar bei KI</h3><p>ChatGPT und Perplexity empfehlen, was strukturiert verständlich ist. Ihre Daten liefern genau diese Signale.</p></div>
+      <div class="card"><h3>Schnell und sicher</h3><p>Kaum Fremd-Code, keine ungefragten Tracker, selbst gehostete Schriften. DSGVO-freundlich und flott, gerade mobil.</p></div>
+      <div class="card"><h3>Klar bedienbar</h3><p>Ein Faden führt zum Kennenlernen, WhatsApp und Bewertungen sind immer griffbereit. Auch per Tastatur nutzbar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 REFERENZEN -->
+<section class="section section--sand" id="referenzen">
+  <div class="wrap">
+    <div class="sec-h center" style="text-align:center;max-width:660px;margin:0 auto 44px">
+      <div class="eyebrow">Referenzen</div>
+      <h2>Kein Einzelfall.</h2>
+      <p>Von der eigenen Website über ein Café und ein Pilates-Studio bis zu Hightech, Handwerk und Steuerberatung, alle mit KI-Unterstützung gebaut.</p>
+    </div>
+    <div class="refs">
+      <div class="ref">
+        <img class="ref__shot" src="media/refs/akyol.webp" alt="Startseite akyol.de" width="640" height="400" loading="lazy" decoding="async">
+        <div class="ref__body"><h4>akyol.de</h4><p>Meine eigene Website: Interim Management, Blog und Vorträge.</p>
+          <a href="https://www.akyol.de" target="_blank" rel="noopener">Live ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+          <div class="ref__extra"><div class="lbl">Interaktive Vorträge</div>
+            <a href="https://akyol.de/presentations/ki-gestern-heute-morgen/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>KI: gestern, heute, morgen</a>
+            <a href="https://akyol.de/presentations/ki-arbeitsarchitektur/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>KI als Arbeitsarchitektur</a>
+          </div>
+        </div>
+      </div>
+      <div class="ref"><img class="ref__shot" src="media/refs/cafetrotzdem.webp" alt="Startseite Café Trotzdem" width="640" height="400" loading="lazy" decoding="async"><div class="ref__body"><h4>Café Trotzdem</h4><p>Türkisch-internationales Café in Mönchengladbach, Redesign-Entwurf.</p><a href="https://suak0903.github.io/cafe-trotzdem/" target="_blank" rel="noopener">Live ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a></div></div>
+      <div class="ref"><img class="ref__shot" src="media/refs/coreform.webp" alt="Startseite core:form" width="640" height="400" loading="lazy" decoding="async"><div class="ref__body"><h4>core:form</h4><p>Pilates-Studio: Kursbuchung, Studios und Ausbildung.</p><a href="https://www.core-form.de" target="_blank" rel="noopener">Live ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a></div></div>
+      <div class="ref"><img class="ref__shot" src="media/refs/barista.webp" alt="Startseite Barista-Biker" width="640" height="400" loading="lazy" decoding="async"><div class="ref__body"><h4>Barista-Biker</h4><p>Mobiles Kaffeecatering mit dem Coffee-Bike, Redesign-Entwurf.</p><a href="https://suak0903.github.io/barista-biker/" target="_blank" rel="noopener">Live ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a></div></div>
+      <div class="ref"><img class="ref__shot" src="media/refs/cancontrols.webp" alt="Startseite CanControls" width="640" height="400" loading="lazy" decoding="async"><div class="ref__body"><h4>CanControls</h4><p>Bildverstehen und Sensorik aus Aachen, technischer B2B-Auftritt.</p><a href="https://suak0903.github.io/cancontrols/" target="_blank" rel="noopener">Live ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a></div></div>
+      <div class="ref"><img class="ref__shot" src="media/refs/seitec.webp" alt="Startseite Seitec" width="640" height="400" loading="lazy" decoding="async"><div class="ref__body"><h4>Seitec</h4><p>Energie- und Sicherheitstechnik, regionaler Handwerksbetrieb.</p><a href="https://suak0903.github.io/seitec/" target="_blank" rel="noopener">Live ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a></div></div>
+      <div class="ref"><img class="ref__shot" src="media/refs/muyres.webp" alt="Startseite Steuerberatung Muyres" width="640" height="400" loading="lazy" decoding="async"><div class="ref__body"><h4>Steuerberatung Muyres</h4><p>Kanzlei-Auftritt mit Fachgebieten und Team, Redesign-Entwurf.</p><a href="https://suak0903.github.io/steuerberatung-muyres/" target="_blank" rel="noopener">Live ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 WARUM ICH -->
+<section class="section" id="warum">
+  <div class="wrap">
+    <div class="sec-h">
+      <div class="eyebrow">Warum ich</div>
+      <h2>Der richtige Partner für so ein Projekt.</h2>
+      <p>Weder anonyme Großagentur noch Gelegenheitsanbieter, sondern genau der Sweet Spot dazwischen.</p>
+    </div>
+    <div class="why">
+      <div class="card"><h3>Fester Preis, keine Überraschungen</h3><p>Ein vollständiger Auftritt zum Festpreis, mit klarem Anfang und Ende. Fest heißt fest.</p></div>
+      <div class="card"><h3>Der Sweet Spot</h3><p>Ein erfahrener Partner, ein Ansprechpartner, klare Verantwortung. Alles aus einer Hand, ohne Agentur-Overhead.</p></div>
+      <div class="card"><h3>Wächst mit Ihnen</h3><p>Terminbuchung, Blog, später ein KI-Assistent für Erstfragen. In Stufen von kostenfrei bis kleine Monatsgebühr.</p></div>
+      <div class="card"><h3>Die Seite gehört Ihnen</h3><p>Volle Nutzungsrechte, kein Abo-Zwang, kein Nachverkauf durch die Hintertür. Betreuung nach Bedarf.</p></div>
+    </div>
+    <div class="note-box" style="margin-top:40px">
+      <b>Was ist das hier?</b> Ein unverbindlicher Redesign-Entwurf für Dr. Bernd Slaghuis, erstellt von Dr.-Ing. Suat Akyol. Inhalte und Bilder stammen aus dem bestehenden Auftritt. Anmerkungen gern an <a href="mailto:contact@akyol.de">contact@akyol.de</a>.
+    </div>
+  </div>
+</section>
+
+<button class="toc-top" id="tocTop" aria-label="Zurück zum Inhaltsverzeichnis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+
+<!-- #chrome:footer -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <a href="index.html#top" class="brand"><b>Dr. Bernd Slaghuis</b></a>
+      <nav class="foot__nav" aria-label="Footer">
+        <a href="index.html#ueber">Über mich</a>
+        <a href="index.html#leistungen">Coaching</a>
+        <a href="index.html#presse">Presse</a>
+        <a href="index.html#kontakt">Kontakt</a>
+        <a href="hinweise.html">Über diesen Entwurf</a>
+      </nav>
+    </div>
+    <div class="foot__bottom">
+      <span>Karriere- und Business-Coaching &middot; Köln</span>
+      <span><a href="impressum.html">Impressum</a> &nbsp;&middot;&nbsp; <a href="datenschutz.html">Datenschutz</a></span>
+    </div>
+  </div>
+</footer>
+<!-- /#chrome:footer -->
+<!-- #chrome:reviews -->
+<div class="rv-scrim" id="rvScrim"></div>
+<aside class="reviews" id="reviews" aria-label="Google-Bewertungen" aria-hidden="true">
+  <div class="reviews__head">
+    <div class="rh-ava"><svg viewBox="0 0 48 48" width="26" height="26"><path fill="#4285F4" d="M45 24c0-1.6-.1-3.1-.4-4.6H24v9.3h11.8c-.5 2.7-2 5-4.3 6.6v5.5h7C42.6 37 45 31 45 24z"/><path fill="#34A853" d="M24 46c5.8 0 10.7-1.9 14.3-5.2l-7-5.5c-1.9 1.3-4.4 2.1-7.3 2.1-5.6 0-10.4-3.8-12.1-8.9H4.6v5.6C8.2 41.1 15.5 46 24 46z"/><path fill="#FBBC05" d="M11.9 28.5c-.4-1.3-.7-2.7-.7-4.5s.3-3.2.7-4.5v-5.6H4.6C3 17.1 2 20.4 2 24s1 6.9 2.6 10.1l7.3-5.6z"/><path fill="#EA4335" d="M24 11.6c3.2 0 6 1.1 8.2 3.2l6.2-6.2C34.7 5 29.8 3 24 3 15.5 3 8.2 7.9 4.6 15.4l7.3 5.6C13.6 15.4 18.4 11.6 24 11.6z"/></svg></div>
+    <div>
+      <h3>Karriere-Coach Dr. Bernd Slaghuis</h3>
+      <div class="rh-num"><b>4,9</b><span class="st"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg></span></div>
+      <div class="reviews__powered">powered by Google</div>
+    </div>
+    <button class="reviews__x" id="rvClose" aria-label="Schließen">&times;</button>
+  </div>
+  <div class="reviews__list">
+    <div class="rv">
+      <div class="rv__top"><div class="rv__ava" style="background:#3d7a8a">A</div><div><div class="rv__nm">Aleksey Sidorov</div><div class="rv__meta">vor 3 Monaten</div></div></div>
+      <div class="rv__stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg></div>
+      <p>Sehr professionelle und hilfreiche Beratung rund um meine berufliche Orientierung und den Bewerbungsprozess. Durch seine strukturierte Herangehensweise konnte ich meine Ziele deutlich besser definieren und konkrete nächste Schritte ableiten. Klare Weiterempfehlung.</p>
+    </div>
+    <div class="rv">
+      <div class="rv__top"><div class="rv__ava" style="background:#8a6b4d">H</div><div><div class="rv__nm">Hai Nam Nguyen</div><div class="rv__meta">vor einem Jahr</div></div></div>
+      <div class="rv__stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg></div>
+      <p>Nach einigen Schwierigkeiten beim Berufseinstieg war ich auf der Suche nach einem neutralen, objektiven und vor allem ehrlichen Sparringspartner. Genau das habe ich bei Bernd gefunden. Sehr zu empfehlen.</p>
+    </div>
+    <div class="rv" style="text-align:center;padding:22px 0 6px">
+      <a href="https://www.google.com/search?q=Karriere-Coach+Dr.+Bernd+Slaghuis+Bewertungen" target="_blank" rel="noopener" style="color:var(--gold);font-weight:700;font-size:14px">Alle Bewertungen bei Google ansehen ↗</a>
+    </div>
+  </div>
+</aside>
+<!-- /#chrome:reviews -->
+<!-- #chrome:demobar -->
+<div class="demobar" id="demobar">
+  <span>Relaunch-Entwurf, kein offizieller Auftritt von Dr. Bernd Slaghuis. <a href="hinweise.html">Was ist besser?</a> <span class="demobar__sep">&middot;</span> <a href="https://bernd-slaghuis.de/" target="_blank" rel="noopener">Originalseite</a></span>
+  <button id="demoClose" aria-label="Hinweis schließen">&times;</button>
+</div>
+<!-- /#chrome:demobar -->
+<script src="js/site.js?v=1"></script>
+</body>
+</html>
