@@ -176,15 +176,21 @@
   /* ---------- Scrollspy: aktive Sektion im Menue unterstreichen ---------- */
   var spyLinks = Array.prototype.slice.call(doc.querySelectorAll('.nav__links a[href*="#"]')), spyMap = {};
   spyLinks.forEach(function (a) { var h = a.hash; if (h && h.length > 1) { var s = doc.querySelector(h); if (s) spyMap[h.slice(1)] = a; } });
+  /* Zusatz-Sektionen, die denselben Nav-Punkt aktiv halten (z.B. #themen gehoert zu "Blog & Themen") */
+  var spyAlias = { themen: 'blog' };
+  function spyTarget(id) { return spyMap[id] ? id : (spyAlias[id] && spyMap[spyAlias[id]] ? spyAlias[id] : null); }
   if ('IntersectionObserver' in window && Object.keys(spyMap).length) {
     var spyOrder = Object.keys(spyMap), visible = {};
     var sio = new IntersectionObserver(function (es) {
       es.forEach(function (en) { visible[en.target.id] = en.isIntersecting; });
       spyLinks.forEach(function (a) { a.classList.remove('active'); });
-      /* erste in Dokument-/Nav-Reihenfolge sichtbare Sektion markieren; ganz oben (Hero, nichts im Band) bleibt alles leer */
-      for (var i = 0; i < spyOrder.length; i++) { if (visible[spyOrder[i]]) { spyMap[spyOrder[i]].classList.add('active'); break; } }
+      var targets = {};
+      Object.keys(visible).forEach(function (id) { if (visible[id]) { var t = spyTarget(id); if (t) targets[t] = true; } });
+      /* erste in Nav-Reihenfolge sichtbare (inkl. Alias) markieren; ganz oben bleibt alles leer */
+      for (var i = 0; i < spyOrder.length; i++) { if (targets[spyOrder[i]]) { spyMap[spyOrder[i]].classList.add('active'); break; } }
     }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
     spyOrder.forEach(function (id) { var s = doc.getElementById(id); if (s) sio.observe(s); });
+    Object.keys(spyAlias).forEach(function (id) { var s = doc.getElementById(id); if (s) sio.observe(s); });
   }
 
   /* ---------- Hero-Ribbon: mobiler Auto-Marquee, per Finger schiebbar ---------- */
