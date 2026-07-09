@@ -151,8 +151,8 @@
       var y = (window.scrollY || window.pageYOffset);
       if (y < 1300) {
         var t = 'translate3d(0,' + (y * 0.5).toFixed(1) + 'px,0)';
-        if (heroBg) heroBg.style.transform = t;                              /* Hintergrund-Verlauf */
-        if (heroPortrait && window.innerWidth <= 1023) heroPortrait.style.transform = t; /* Portrait nur mobil, reine Translation (keine Groessenaenderung) */
+        if (heroBg) heroBg.style.transform = t;         /* Hintergrund-Verlauf */
+        if (heroPortrait) heroPortrait.style.transform = t; /* Portrait (Desktop + mobil), reine Translation - keine Groessenaenderung */
       }
       ticking = false;
     });

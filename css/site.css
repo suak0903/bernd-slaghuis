@@ -138,8 +138,9 @@ p{margin:0 0 1rem}
 .hero__sub{color:rgba(255,255,255,.82);font-size:clamp(17px,2vw,20px);max-width:520px;margin:20px 0 0;line-height:1.55}
 .hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .hero__portrait{position:relative;justify-self:center}
-.hero__portrait img{width:min(100%,478px);filter:drop-shadow(0 22px 48px rgba(0,0,0,.42));
-  -webkit-mask-image:linear-gradient(180deg,#000 82%,transparent 99%);mask-image:linear-gradient(180deg,#000 82%,transparent 99%)}
+/* KEIN Drop-Shadow (erzeugte den rechteckigen Schatten); Ober- UND Unterkante weich ausblenden, damit keine Bildkante als Linie sichtbar wird */
+.hero__portrait img{width:min(100%,478px);
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 7%,#000 84%,transparent 99%);mask-image:linear-gradient(180deg,transparent 0,#000 7%,#000 84%,transparent 99%)}
 .hero__portrait .rating{position:absolute;left:-14px;bottom:24px}
 .ribbon{position:relative;z-index:1;min-width:0;max-width:100%;margin-top:34px;display:flex;flex-wrap:wrap;gap:12px 26px;padding-top:20px;border-top:1px solid var(--line-d)}
 .ribbon span{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,.8);font-size:14px;font-weight:600}
@@ -266,6 +267,7 @@ p{margin:0 0 1rem}
 @keyframes heroUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 @keyframes heroRise{from{transform:translateY(24px)}to{transform:none}}
 @keyframes heroPop{from{opacity:0;transform:translateY(30px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes heroFade{from{opacity:0}to{opacity:1}}  /* Portrait: nur Opazitaet, damit JS-Parallaxe (transform) frei bleibt */
 .hero .h-anim{animation:heroUp .65s var(--ease) both}
 .hero h1.h-anim{animation:heroRise .8s var(--ease) both}
 .hero .hero__eyebrow.h-anim{animation-delay:.05s}
@@ -273,7 +275,7 @@ p{margin:0 0 1rem}
 .hero .hero__sub.h-anim{animation-delay:.26s}
 .hero .hero__cta.h-anim{animation-delay:.38s}
 .hero .ribbon.h-anim{animation-delay:.5s}
-.hero__portrait.h-anim{animation:heroPop .9s var(--ease) both;animation-delay:.2s}
+.hero__portrait.h-anim{animation:heroFade .8s var(--ease) both;animation-delay:.15s}
 
 /* ---- Responsive ---- */
 @media(max-width:1023px){
@@ -287,10 +289,9 @@ p{margin:0 0 1rem}
   .hero__bg{background:radial-gradient(140% 76% at 50% 5%,#4a4938,var(--olive-deep) 72%)}
   .hero__grid{grid-template-columns:1fr;gap:0;min-height:100svh;width:100%;position:relative;text-align:center;align-items:end}
   /* Zentrierung per Margin (nicht Transform - sonst ueberschreibt die heroPop-Endlage transform:none die Mitte) */
-  .hero__portrait{order:-1;position:absolute;left:0;right:0;top:0;margin:0 auto;width:min(120%,560px);justify-self:auto;z-index:0;pointer-events:none}
-  .hero__portrait img{width:100%;filter:none;-webkit-mask-image:none;mask-image:none}
-  /* Lade-Animation (mit scale) mobil aus - sonst haelt transform:none die JS-Parallaxe fest */
-  .hero__portrait.h-anim{animation:none}
+  .hero__eyebrow{display:none}  /* Name steht schon im Header neben dem Logo */
+  .hero__portrait{order:-1;position:absolute;left:0;right:0;top:20px;margin:0 auto;width:min(108%,505px);justify-self:auto;z-index:0;pointer-events:none}
+  .hero__portrait img{width:100%;-webkit-mask-image:none;mask-image:none}
   .hero__portrait .rating{display:none}
   .hero__text{position:relative;z-index:2;width:100%;padding:118px 22px 32px;
     background:linear-gradient(180deg,transparent 0%,rgba(28,27,20,.26) 30%,rgba(28,27,20,.8) 56%,var(--olive-deep) 90%)}
@@ -299,6 +300,8 @@ p{margin:0 0 1rem}
   .contact__block .btn--wa{display:flex;width:100%;justify-content:center}
 }
 @media(min-width:1024px){
+  /* Hero-Text + Buttons 50px hoch, damit die Buttons unten ins Bild ruecken */
+  .hero__text{margin-top:-50px}
   /* Kontakt: Social-Block schmaler + rechtsbuendig (etwa in Flucht des ersten Menuepunkts) */
   .contact{grid-template-columns:1.12fr .88fr}
   .contact__block:last-child{text-align:right}
