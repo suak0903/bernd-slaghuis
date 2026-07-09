@@ -125,6 +125,10 @@
     else if (mmenu && mmenu.classList.contains('open')) closeMenu();
   });
 
+  /* ---------- Demo-Leiste schliessen ---------- */
+  var demobar = doc.getElementById('demobar'), dclose = doc.getElementById('demoClose');
+  if (dclose && demobar) dclose.addEventListener('click', function () { demobar.classList.add('hide'); });
+
   /* ---------- Zurueck nach oben ---------- */
   var tocTop = doc.getElementById('tocTop');
   if (tocTop) {
@@ -136,15 +140,20 @@
 
   /* ---------- Hero-Parallaxe (dezent) ---------- */
   var heroBg = doc.getElementById('heroBg');
+  var heroPortrait = doc.querySelector('.hero__portrait');
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var ticking = false;
   function parallax() {
-    if (!heroBg || reduce) return;
+    if (reduce || (!heroBg && !heroPortrait)) return;
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(function () {
       var y = (window.scrollY || window.pageYOffset);
-      if (y < 900) heroBg.style.transform = 'translate3d(0,' + (y * 0.22) + 'px,0)';
+      if (y < 1300) {
+        var t = 'translate3d(0,' + (y * 0.5).toFixed(1) + 'px,0)';
+        if (heroBg) heroBg.style.transform = t;                              /* Hintergrund-Verlauf */
+        if (heroPortrait && window.innerWidth <= 1023) heroPortrait.style.transform = t; /* Portrait nur mobil, reine Translation (keine Groessenaenderung) */
+      }
       ticking = false;
     });
   }
@@ -164,13 +173,34 @@
     }
   }
 
-  /* ---------- Laufband (nahtlose Schleife) ---------- */
-  var track = doc.querySelector('.ribbon__track');
-  if (track && !track.dataset.cloned) {
-    track.dataset.cloned = '1';
-    var kids = Array.prototype.slice.call(track.children);
-    kids.forEach(function (k) { track.appendChild(k.cloneNode(true)); });
-  }
+  /* ---------- Hero-Ribbon: mobiler Auto-Marquee, per Finger schiebbar ---------- */
+  (function () {
+    var ribbon = doc.querySelector('.ribbon'); if (!ribbon) return;
+    var mq = window.matchMedia('(max-width:700px)');
+    var track = null, built = false, offset = 0, half = 0, raf = 0, dragging = false, sx = 0, so = 0;
+    function build() {
+      if (built) return;
+      track = doc.createElement('div'); track.className = 'ribbon__track';
+      while (ribbon.firstChild) track.appendChild(ribbon.firstChild);
+      [].slice.call(track.children).forEach(function (k) { var c = k.cloneNode(true); c.setAttribute('data-dup', '1'); track.appendChild(c); });
+      ribbon.appendChild(track); built = true; offset = 0; half = track.scrollWidth / 2;
+    }
+    function unbuild() {
+      if (!built) return; cancelAnimationFrame(raf);
+      [].slice.call(track.querySelectorAll('[data-dup]')).forEach(function (d) { d.remove(); });
+      while (track.firstChild) ribbon.insertBefore(track.firstChild, track); track.remove(); track = null; built = false;
+    }
+    function frame() {
+      if (!dragging && !reduce) offset -= 0.4; if (offset <= -half) offset += half; if (offset > 0) offset -= half;
+      track.style.transform = 'translateX(' + offset.toFixed(2) + 'px)'; raf = requestAnimationFrame(frame);
+    }
+    function start() { build(); half = track.scrollWidth / 2; cancelAnimationFrame(raf); raf = requestAnimationFrame(frame); }
+    ribbon.addEventListener('touchstart', function (e) { if (!built) return; dragging = true; sx = e.touches[0].clientX; so = offset; }, { passive: true });
+    ribbon.addEventListener('touchmove', function (e) { if (!dragging) return; offset = so + (e.touches[0].clientX - sx); }, { passive: true });
+    ribbon.addEventListener('touchend', function () { dragging = false; });
+    function apply() { if (mq.matches) start(); else unbuild(); }
+    apply(); if (mq.addEventListener) mq.addEventListener('change', apply); else mq.addListener(apply);
+  })();
 
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();

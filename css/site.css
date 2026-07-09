@@ -180,9 +180,18 @@ p{margin:0 0 1rem}
 .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 @media(max-width:820px){.cards3{grid-template-columns:1fr}}
 /* Presse-Logos in den Karten: klein, entsaettigt, weisser Hintergrund per multiply weg */
-.press__cardlogo{height:28px;display:flex;align-items:center;margin-bottom:2px}
-.press__img{height:23px;width:auto;opacity:.82;mix-blend-mode:multiply}
-.press__wm{font-family:'Manrope';font-weight:700;font-size:21px;line-height:24px;color:var(--olive-deep);opacity:.85}
+/* Presse-Karten einheitlich: gleiche Kartenhoehe (Grid-Stretch + Flex, Datum unten),
+   fixe Logo-Zone (Capital ohne Bild reserviert gleich viel), Namen in Marken-Font + kleines Farb-Logo. */
+.cards3 .card{display:flex;flex-direction:column}
+.cards3 .card > p{margin-bottom:10px}
+.cards3 .card > span:last-child{margin-top:auto;padding-top:8px}
+.press__cardlogo{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:8px;min-height:54px;margin-bottom:14px}
+.pw{line-height:1;color:var(--olive-deep)}
+.pw--capital{font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:23px;letter-spacing:-.01em}
+.pw--spiegel{font-family:Georgia,'Times New Roman',serif;font-weight:800;font-size:20px;letter-spacing:.01em}
+.pw--bi{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:15px;letter-spacing:.05em;text-transform:uppercase}
+.press__img{height:17px;width:auto;display:block}
+.press__img--mult{mix-blend-mode:multiply}
 
 /* ---- Google-Rating-Badge: freigestellt, Optik wie sein Plugin (Google Rating / 4,9 / Sterne + halber) ---- */
 .rating{display:inline-flex;align-items:center;gap:12px;background:none;border:0;padding:6px 4px;cursor:pointer;transition:transform .25s var(--ease)}
@@ -280,6 +289,8 @@ p{margin:0 0 1rem}
   /* Zentrierung per Margin (nicht Transform - sonst ueberschreibt die heroPop-Endlage transform:none die Mitte) */
   .hero__portrait{order:-1;position:absolute;left:0;right:0;top:0;margin:0 auto;width:min(120%,560px);justify-self:auto;z-index:0;pointer-events:none}
   .hero__portrait img{width:100%;filter:none;-webkit-mask-image:none;mask-image:none}
+  /* Lade-Animation (mit scale) mobil aus - sonst haelt transform:none die JS-Parallaxe fest */
+  .hero__portrait.h-anim{animation:none}
   .hero__portrait .rating{display:none}
   .hero__text{position:relative;z-index:2;width:100%;padding:118px 22px 32px;
     background:linear-gradient(180deg,transparent 0%,rgba(28,27,20,.26) 30%,rgba(28,27,20,.8) 56%,var(--olive-deep) 90%)}
@@ -313,7 +324,7 @@ p{margin:0 0 1rem}
 @media (hover:none),(pointer:coarse){.brand:hover{transform:none}.svc:hover{transform:none}}
 
 /* ---- Demo-Leiste ---- */
-.demobar{position:fixed;bottom:0;left:0;right:0;z-index:120;background:var(--olive-deep);color:rgba(255,255,255,.9);
+.demobar{position:fixed;bottom:0;left:0;right:0;z-index:120;background:rgba(43,42,32,.86);backdrop-filter:blur(9px) saturate(130%);-webkit-backdrop-filter:blur(9px) saturate(130%);color:rgba(255,255,255,.9);
   display:flex;align-items:center;justify-content:center;gap:16px;padding:11px 46px 11px 18px;font-size:13.5px;text-align:center;
   border-top:1px solid var(--yellow);transform:translateY(100%);animation:demoin .5s .9s var(--ease) forwards}
 @keyframes demoin{to{transform:none}}
@@ -334,8 +345,9 @@ p{margin:0 0 1rem}
 
 /* Mini table of contents (designt, klickbar) */
 /* Mini-ToC: gleich breite, symmetrische Buttons (Grid, kein ungleiches Flex-Wrap) */
-.toc{position:relative;margin-top:30px;display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
-@media(max-width:760px){.toc{grid-template-columns:1fr}}
+.toc{position:relative;margin-top:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:820px){.toc{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.toc{grid-template-columns:1fr}}
 .toc a{display:inline-flex;align-items:center;gap:9px;min-width:0;padding:11px 16px;border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.9);
   font-weight:600;font-size:14px;transition:background .2s,border-color .2s,color .2s}
 .toc a .tn{font-size:11px;font-weight:700;color:var(--yellow);letter-spacing:.04em}
