@@ -68,7 +68,8 @@ p{margin:0 0 1rem}
   transition:color .3s var(--ease),transform .28s var(--ease);transform-origin:center}
 .brand:hover{transform:scale(1.05)}
 .brand b{font-weight:700}.brand small{display:block;font-weight:600;font-size:11px;letter-spacing:.02em;color:var(--yellow)}
-.brand .logo{width:36px;height:auto;flex:none;transition:filter .3s var(--ease)}
+/* Logo als exakt eingefaerbte Datei je Zustand (Dunkel=Gelb #f2dd0b, Hell=Gold #b98d05) - identisch mit Button/Unterstreichung */
+.brand .logo{width:36px;height:30px;flex:none;display:inline-block;background:url(../media/logo-mark-yellow.webp) center/contain no-repeat}
 .nav__links{display:flex;align-items:center;gap:30px}
 .nav__links a{font-size:14.5px;font-weight:600;color:rgba(255,255,255,.92);position:relative;padding:4px 0}
 .nav__links a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:2px;background:var(--yellow);transition:right .3s var(--ease)}
@@ -83,16 +84,18 @@ p{margin:0 0 1rem}
 .nav.scrolled .brand{color:var(--olive-deep)}
 .nav.scrolled .brand small{color:var(--gold)}
 .nav.scrolled .nav__links a{color:var(--ink)}
+/* Auf hellem Header alle Akzente in der Logo-auf-Weiss-Farbe (Gold) - Gelb waere auf Creme zu blass; Scrollspy-Unterstreichung mitziehen */
+.nav.scrolled .nav__links a::after{background:var(--gold)}
 /* CTA-Ghost auf hellem Scroll-Header: Gold (Gelb waere auf Creme unlesbar), bleibt Rahmen/leer */
 .nav.scrolled .nav__links a.nav__cta{background:transparent;border-color:var(--gold);color:var(--gold)}
 .nav.scrolled .nav__links a.nav__cta:hover{background:rgba(185,141,5,.12);color:var(--gold)}
 .nav.scrolled .burger span{background:var(--olive-deep)}
-/* Marken-Zeichen auf hellem Header abdunkeln (Gelb auf Creme sonst zu blass) */
-.nav.scrolled .brand .logo{filter:brightness(.55) saturate(1.5)}
+/* Marken-Zeichen auf hellem Header = Gold-Datei (exakt wie Button/Unterstreichung) */
+.nav.scrolled .brand .logo{background-image:url(../media/logo-mark-gold.webp)}
 /* Menue offen: Header BLEIBT stehen, wird transparent, Burger morpht am Platz zum X (Sonderfall Bernd) */
 .nav.menu-open{background:transparent!important;border-bottom-color:transparent!important;box-shadow:none!important}
 .nav.menu-open .brand{color:#fff}
-.nav.menu-open .brand .logo{filter:none}
+.nav.menu-open .brand .logo{background-image:url(../media/logo-mark-yellow.webp)}
 .nav.menu-open .burger span{background:#fff}
 .nav.menu-open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav.menu-open .burger span:nth-child(2){opacity:0}
@@ -297,7 +300,7 @@ p{margin:0 0 1rem}
   .hero__grid{grid-template-columns:1fr;gap:0;min-height:100svh;width:100%;position:relative;text-align:center;align-items:end}
   /* Zentrierung per Margin (nicht Transform - sonst ueberschreibt die heroPop-Endlage transform:none die Mitte) */
   .hero__eyebrow{display:none}  /* Name steht schon im Header neben dem Logo */
-  .hero__portrait{order:-1;position:absolute;left:0;right:0;top:20px;margin:0 auto;width:min(108%,505px);justify-self:auto;z-index:0;pointer-events:none}
+  .hero__portrait{order:-1;position:absolute;left:0;right:0;top:40px;margin:0 auto;width:min(108%,505px);justify-self:auto;z-index:0;pointer-events:none}
   .hero__portrait img{width:100%;-webkit-mask-image:none;mask-image:none}
   .hero__portrait .rating{display:none}
   .hero__text{position:relative;z-index:2;width:100%;padding:118px 22px 32px;

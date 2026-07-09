@@ -177,15 +177,14 @@
   var spyLinks = Array.prototype.slice.call(doc.querySelectorAll('.nav__links a[href*="#"]')), spyMap = {};
   spyLinks.forEach(function (a) { var h = a.hash; if (h && h.length > 1) { var s = doc.querySelector(h); if (s) spyMap[h.slice(1)] = a; } });
   if ('IntersectionObserver' in window && Object.keys(spyMap).length) {
+    var spyOrder = Object.keys(spyMap), visible = {};
     var sio = new IntersectionObserver(function (es) {
-      es.forEach(function (en) {
-        if (en.isIntersecting) {
-          spyLinks.forEach(function (a) { a.classList.remove('active'); });
-          var a = spyMap[en.target.id]; if (a) a.classList.add('active');
-        }
-      });
+      es.forEach(function (en) { visible[en.target.id] = en.isIntersecting; });
+      spyLinks.forEach(function (a) { a.classList.remove('active'); });
+      /* erste in Dokument-/Nav-Reihenfolge sichtbare Sektion markieren; ganz oben (Hero, nichts im Band) bleibt alles leer */
+      for (var i = 0; i < spyOrder.length; i++) { if (visible[spyOrder[i]]) { spyMap[spyOrder[i]].classList.add('active'); break; } }
     }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
-    Object.keys(spyMap).forEach(function (id) { var s = doc.getElementById(id); if (s) sio.observe(s); });
+    spyOrder.forEach(function (id) { var s = doc.getElementById(id); if (s) sio.observe(s); });
   }
 
   /* ---------- Hero-Ribbon: mobiler Auto-Marquee, per Finger schiebbar ---------- */
